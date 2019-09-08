@@ -1,7 +1,7 @@
 #Mine
 scratch*
 notes.txt
-/docs
+docs/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
