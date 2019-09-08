@@ -1,3 +1,6 @@
+#Mine
+scratch*
+notes.txt
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -51,10 +54,6 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
 
 # Flask stuff:
 instance/
