@@ -11,9 +11,14 @@ pipeline {
     npm_config_cache = 'npm-cache'
   }
   stages {
-    stage('Install Packages') {
+    stage('K8S Build') {
       steps {
         sh 'npm install'
+      }
+    }
+    stage('Install Packages') {
+      steps {
+        
       }
     }
     stage('Test and Build') {
@@ -32,7 +37,7 @@ pipeline {
     }
     stage('Deployment') {
       parallel {
-        stage('Staging') {
+        stage('Production-Blue') {
           when {
             branch 'blue'
           }
@@ -44,7 +49,7 @@ pipeline {
             mail(subject: 'Blue Prod Build', body: 'New Deployment to kraut-blue', to: 'csvrandom@mail.com')
           }
         }
-        stage('Production') {
+        stage('Production-Green') {
           when {
             branch 'green'
           }
