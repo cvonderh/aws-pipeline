@@ -11,11 +11,11 @@ pipeline {
     npm_config_cache = 'npm-cache'
   }
   stages {
-    stage('K8S Build') {
-      steps {
-        sh 'npm install'
-      }
-    }
+    // stage('K8S Build') {
+    //   steps {
+    //     sh 'npm install'
+    //   }
+    // }
     stage('Install Packages') {
       steps {
         
