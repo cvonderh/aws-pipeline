@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'cvonderh:go-docker:latest' }
+        docker { image 'cvonderh/go-docker:latest' }
     }
     stages {
         stage('Test') {
