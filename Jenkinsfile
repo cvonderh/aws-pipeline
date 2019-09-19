@@ -3,9 +3,9 @@ pipeline {
         docker { image 'cvonderh/go-docker:latest' }
     }
     stages {
-        stage('Testing Docker Image') {
+        stage('Lint Docker Image') {
             steps {
-                sh 'go version'
+                sh 'golint ./go-docker/go-docker'
             }
         }
     }
