@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Lint Docker Image') {
             steps {
-                sh 'golint ./go-docker/go-docker'
+                sh '/home/ubuntu/work/bin/golint ./go-docker/go-docker'
             }
         }
     }
