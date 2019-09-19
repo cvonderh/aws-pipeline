@@ -1,67 +1,12 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:10-alpine'
-      args '-p 20001-20100:3000'
+    agent {
+        docker { image 'cvonderh:go-docker:latest' }
     }
-  }
-  environment {
-    CI = 'true'
-    HOME = '.'
-    npm_config_cache = 'npm-cache'
-  }
-  stages {
-    // stage('K8S Build') {
-    //   steps {
-    //     sh 'npm install'
-    //   }
-    // }
-    stage('Install Packages') {
-      steps {
-        
-      }
-    }
-    stage('Test and Build') {
-      parallel {
-        stage('Run Tests') {
-          steps {
-            sh 'npm run test'
-          }
-        }
-        stage('Create Build Artifacts') {
-          steps {
-            sh 'npm run build'
-          }
-        }
-      }
-    }
-    stage('Deployment') {
-      parallel {
-        stage('Production-Blue') {
-          when {
-            branch 'blue'
-          }
-          steps {
-            withAWS(region:'us-east-1',credentials:'admin-sa') {
-              s3Delete(bucket: 'kraut-blue-udacity', path:'**/*')
-              s3Upload(bucket: 'kraut-blue-udacity', workingDir:'build', includePathPattern:'**/*');
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
             }
-            mail(subject: 'Blue Prod Build', body: 'New Deployment to kraut-blue', to: 'csvrandom@mail.com')
-          }
         }
-        stage('Production-Green') {
-          when {
-            branch 'green'
-          }
-          steps {
-            withAWS(region:'us-east-1',credentials:'admin-sa') {
-              s3Delete(bucket: 'kraut-green-udacity', path:'**/*')
-              s3Upload(bucket: 'kraut-geen-udacity', workingDir:'build', includePathPattern:'**/*');
-            }
-            mail(subject: 'Green Prod Build', body: 'New Deployment to kraut-green', to: 'csvrandom@mail.com')
-          }
-        }
-      }
     }
-  }
 }
