@@ -1,11 +1,11 @@
 pipeline {
     agent {
-        docker { image 'cvonderh/go-docker:latest' }
+        docker { image 'node:7-alpine' }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'go version'
+                sh 'node --version'
             }
         }
     }
