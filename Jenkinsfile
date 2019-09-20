@@ -19,7 +19,16 @@ pipeline {
                 sh 'go version'
                 sh 'uname -a'
                 //sh 'curl http://localhost:9090?name=Kraut'
-                sh 'docker ps -a'
+                //sh 'docker ps -a'
+            }
+        }
+        // Test with acurl command
+        stage{
+            agent any
+            {
+                dcoker run exec -it go-docker:latest /bin/bash uname -a
+                //docker run -it -—rm -p 8080:3000 -p 8081:3001 -e RACK_ENV=development -e HOSTNAME=my-container my-rails-app:latest rackup
+
             }
         }
         stage('Example Test') {
