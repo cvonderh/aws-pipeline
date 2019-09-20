@@ -1,11 +1,20 @@
 pipeline {
     agent none 
     stages {
+        // PLACEHOLDER for stage to build locally from Dockerfile, then it will be tested
+        // Lint the local conatiner before it is built and pushed
+        stage{
+            steps{
+                sh 'echo linting now'
+                sh '/home/ubuntu/work/bin/golint ./go-docker/go-docker'
+            }
+        }
+        //
         stage('Example Build') {
-            agent { docker 'maven:3-alpine' } 
+            agent { docker 'cvonderh/go-docker:latest' } 
             steps {
-                echo 'Hello, Maven'
-                sh 'mvn --version'
+                echo 'Hello, from docker-go'
+                sh 'go version'
             }
         }
         stage('Example Test') {
