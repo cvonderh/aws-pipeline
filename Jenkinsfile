@@ -23,7 +23,7 @@ pipeline {
             }
         }
         // Test with acurl command
-        stage{
+        stage("Test service with curl"){
             agent any
             steps{
                 sh 'docker run exec -it go-docker:latest /bin/bash uname -a'
