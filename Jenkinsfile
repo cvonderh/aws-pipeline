@@ -5,7 +5,7 @@ pipeline {
         stage('Test') {
             agent { dockerfile true }
             steps {
-                echo 'Hello, from docker-go second build'
+                echo 'Hello, from docker-go dockerfile build'
                 sh 'go version'
                 sh 'uname -a'
             }
