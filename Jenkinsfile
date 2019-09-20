@@ -4,6 +4,7 @@ pipeline {
         // PLACEHOLDER for stage to build locally from Dockerfile, then it will be tested
         // Lint the local conatiner before it is built and pushed
         stage('Linting go service'){
+            agent any
             steps{
                 sh 'echo linting now'
                 sh '/home/ubuntu/work/bin/golint ./go-docker/go-docker'
