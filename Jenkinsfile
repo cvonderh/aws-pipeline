@@ -18,8 +18,6 @@ pipeline {
                 echo 'Hello, from docker-go'
                 sh 'go version'
                 sh 'uname -a'
-               
-                //sh 'docker ps -a'
             }
         }
         // Test with acurl command
@@ -32,6 +30,16 @@ pipeline {
                 //sh 'docker run  go-docker:latest'
                 //docker run -it -—rm -p 8080:3000 -p 8081:3001 -e RACK_ENV=development -e HOSTNAME=my-container my-rails-app:latest rackup
                  sh 'curl http://localhost:9090?name=Kraut'
+            }
+        }
+        //After all testing and new image pushed to hub, clean up locally
+        stage(clean up local){
+            agent any
+            steps{
+                sh 'docker ps -a'
+                sh 'docker stop $(docker ps -a -q)'
+                sh 'docker rm $(docker ps -a -q)'
+                sh 'docker ps -a'
             }
         }
         stage('Example Test') {
