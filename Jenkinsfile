@@ -48,6 +48,9 @@ pipeline {
                 sh 'docker stop $(docker ps -a -q)'
                 sh 'docker rm $(docker ps -a -q)'
                 sh 'docker ps -a'
+                sh 'docker images'
+                sh 'docker rmi $(docker images -a -q)'
+                sh 'docker images'
             }
         }
         stage('Example Test') {
