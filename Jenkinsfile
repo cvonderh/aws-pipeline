@@ -8,7 +8,7 @@ pipeline {
             steps{
                 sh 'echo linting now'
                 sh '/home/ubuntu/work/bin/golint ./go-docker/go-docker'
-                sh 'curl http://localhost:9090?name=Kraut'
+                
             }
         }
         //
@@ -17,6 +17,7 @@ pipeline {
             steps {
                 echo 'Hello, from docker-go'
                 sh 'go version'
+                sh 'curl http://localhost:9090?name=Kraut'
             }
         }
         stage('Example Test') {
