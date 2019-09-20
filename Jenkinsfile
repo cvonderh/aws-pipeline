@@ -26,7 +26,7 @@ pipeline {
         stage("Test service with curl"){
             agent any
             steps{
-                sh 'docker run -it go-docker:latest'
+                sh 'docker run  go-docker:latest'
                 //docker run -it -—rm -p 8080:3000 -p 8081:3001 -e RACK_ENV=development -e HOSTNAME=my-container my-rails-app:latest rackup
 
             }
