@@ -2,6 +2,14 @@ pipeline {
     agent none 
     stages {
         // PLACEHOLDER for stage to build locally from Dockerfile, then it will be tested
+        stage('Test') {
+            agent { dockerfile true }
+            steps {
+                echo 'Hello, from docker-go second build'
+                sh 'go version'
+                sh 'uname -a'
+            }
+        }
         // Lint the local conatiner before it is built and pushed
         stage('Linting go service'){
             agent any
@@ -15,7 +23,7 @@ pipeline {
         stage('Example Build') {
             agent { docker 'cvonderh/go-docker:latest' } 
             steps {
-                echo 'Hello, from docker-go'
+                echo 'Hello, from docker-go second build'
                 sh 'go version'
                 sh 'uname -a'
             }
