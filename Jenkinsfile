@@ -18,7 +18,7 @@ pipeline {
                 echo 'Hello, from docker-go'
                 sh 'go version'
                 sh 'uname -a'
-                //sh 'curl http://localhost:9090?name=Kraut'
+               
                 //sh 'docker ps -a'
             }
         }
@@ -31,7 +31,7 @@ pipeline {
                 sh 'docker run -d -p 9090:9090 cvonderh/go-docker'
                 //sh 'docker run  go-docker:latest'
                 //docker run -it -—rm -p 8080:3000 -p 8081:3001 -e RACK_ENV=development -e HOSTNAME=my-container my-rails-app:latest rackup
-
+                 sh 'curl http://localhost:9090?name=Kraut'
             }
         }
         stage('Example Test') {
