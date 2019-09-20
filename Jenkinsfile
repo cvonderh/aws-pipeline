@@ -17,6 +17,7 @@ pipeline {
             steps {
                 echo 'Hello, from docker-go'
                 sh 'go version'
+                sh 'uname -a'
                 sh 'curl http://localhost:9090?name=Kraut'
             }
         }
