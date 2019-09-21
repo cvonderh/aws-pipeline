@@ -47,6 +47,16 @@ pipeline {
                  sh 'curl http://localhost:9090?name=Kraut'
             }
         }
+        stage('Publish to dockerhib') {
+            when {
+                branch 'master'
+            }
+            steps {
+                withDockerRegistry([ credentialsId: "41af6e86-82ab-4e52-a11c-521749c59a8f", url: "" ]) {
+                sh 'docker push cvonderh/go-docker:latest'
+                }
+            }
+        }
         //CREATE STEP TO PUSH TO DOCKERHUB
         //After all testing and new image pushed to hub, clean up locally
         stage("clean up local"){
@@ -56,19 +66,13 @@ pipeline {
                 // sh 'docker stop $(docker ps -a -q)'
                 // sh 'docker rm $(docker ps -a -q)'
                 // sh 'docker ps -a'
-                // sh 'docker images'
+                sh 'docker images'
                // sh 'docker rmi $(docker images -a -q)'
+                sh 'docker images purge'
                 sh 'docker images'
                 //sh 'docker system prune -a'
                 // Clean out the go-docker folder for next build
                 sh 'rm go-docker/*'
-            }
-        }
-        stage('Example Test') {
-            agent { docker 'openjdk:8-jre' } 
-            steps {
-                echo 'Hello, JDK'
-                sh 'java -version'
             }
         }
     }
