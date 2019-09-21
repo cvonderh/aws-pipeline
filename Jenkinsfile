@@ -1,7 +1,7 @@
 pipeline {
     agent none 
     stages {
-        // Build service using make
+        // Build service using make and test
         stage("Build service from Makefile"){
             agent any
             steps{
