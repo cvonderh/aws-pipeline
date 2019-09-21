@@ -10,7 +10,7 @@ LABEL maintainer="Craig V <csvrandom@gmail.com>"
 WORKDIR /app
 
 # Copy go mod and sum files
-COPY ./go-docker/go.mod ./go-docker/go.sum ./
+COPY /home/ubuntu/udacity/aws-pipeline/go-docker/go.mod /home/ubuntu/udacity/aws-pipeline/go-docker/go.sum ./
 
 # Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
 RUN go mod download
