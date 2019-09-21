@@ -18,14 +18,14 @@ pipeline {
             }
         }
         // PLACEHOLDER for stage to build locally from Dockerfile, then it will be tested
-        stage('Test') {
+/*         stage('Test') {
             agent { dockerfile true }
             steps {
                 echo 'Hello, from docker-go dockerfile build'
                 sh 'go version'
                 sh 'uname -a'
             }
-        }
+        } */
         //
         stage('Example Build') {
             agent { docker 'cvonderh/go-docker:latest' } 
