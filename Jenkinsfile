@@ -5,10 +5,7 @@ pipeline {
         stage("Build service from Makefile"){
             agent any
             steps{
-               // sh 'pwd'
-                //sh 'cd /home/ubuntu/udacity/aws-pipeline'
-                sh 'pwd'
-                sh 'make -d /home/ubuntu/udacity/aws-pipeline'
+                sh 'make -C /home/ubuntu/udacity/aws-pipeline'
             }
         }
         // Lint the local version of service before it is containerized
