@@ -1,14 +1,14 @@
 pipeline {
     agent none 
     stages {
-        // Build service using make and test
+        // Use make to build and test go service
         stage("Build go-hello service from Makefile"){
             agent any
             steps{
                 sh 'make -C /home/ubuntu/udacity/aws-pipeline'
             }
         }
-        // Lint the local version of service before it is containerized
+        // Lint the local version of service
         stage('Linting go service'){
             agent any
             steps{
@@ -17,8 +17,8 @@ pipeline {
                 
             }
         }
-        // PLACEHOLDER for stage to build locally from Dockerfile, then it will be tested
-        stage('Build go-hello docker image') {
+        // Conatinerize hello-go service
+        stage('Containerize go-hello service') {
             agent { dockerfile true }
             steps {
                 echo 'Hello, from docker-go dockerfile build'
@@ -27,16 +27,16 @@ pipeline {
             }
         }
         //
-        stage('Example Build') {
-            agent { docker 'cvonderh/go-docker:latest' } 
-            steps {
-                echo 'Hello, from docker-go second build'
-                sh 'go version'
-                sh 'uname -a'
-            }
-        }
-        // Test with acurl command
-        stage("Test service with curl"){
+        // stage('Run the new conatiner') {
+        //     agent { docker 'cvonderh/go-docker:latest' } 
+        //     steps {
+        //         echo 'Hello, from docker-go second build'
+        //         sh 'go version'
+        //         sh 'uname -a'
+        //     }
+        // }
+        // Test with a curl command
+        stage("Run conatiner and test service with curl"){
             agent any
             steps{
                 sh 'docker images ls'
