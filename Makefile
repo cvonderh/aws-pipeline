@@ -1,5 +1,4 @@
 ## The Makefile includes instructions on environment setup and lint tests
-
 setup:
 	# Setup folder for build
 	echo "First setup"
@@ -9,9 +8,6 @@ setup:
 	pwd; \
 	go mod init github.com/callicoder/go-docker; \
 	go build
-	#go run ./go-docker/go-docker
-	./go-docker/go-docker
-test:
+	./go-docker/go-docker &
 	curl http://localhost:9090?kraut
-stop:
 	pkill go-docker
