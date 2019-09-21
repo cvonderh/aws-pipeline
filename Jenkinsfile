@@ -6,9 +6,9 @@ pipeline {
             agent any
             steps{
                 sh 'pwd'
-                sh "cd ~/udacity/aws-pipeline"
+                sh "cd /home/ubuntu/udacity/aws-pipeline"
                 sh 'pwd'
-                sh 'make -f Makefile'
+                sh 'make -f Makefile -d '
             }
         }
         // Lint the local version of service before it is containerized
