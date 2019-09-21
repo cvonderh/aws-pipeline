@@ -8,7 +8,7 @@ pipeline {
                 sh 'pwd'
                 sh "cd /home/ubuntu/udacity/aws-pipeline"
                 sh 'pwd'
-                sh 'make -f Makefile -d '
+                sh 'make -f Makefile'
             }
         }
         // Lint the local version of service before it is containerized
