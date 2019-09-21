@@ -12,4 +12,6 @@ setup:
 	#go run ./go-docker/go-docker
 	./go-docker/go-docker
 test:
-	curl http://localhost:9090?name
+	curl http://localhost:9090?kraut
+stop:
+	pkill go-docker
