@@ -13,7 +13,7 @@ pipeline {
             agent any
             steps{
                 sh 'echo linting now'
-                sh '/home/ubuntu/work/bin/golint ./go-docker/go-docker'
+                sh '/home/ubuntu/work/bin/golint /home/ubuntu/udacity/aws-pipeline/go-docker/go-docker'
                 
             }
         }
