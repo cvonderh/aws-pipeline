@@ -57,7 +57,7 @@ pipeline {
                 sh 'docker rm $(docker ps -a -q)'
                 sh 'docker ps -a'
                 sh 'docker images'
-                sh 'docker rmi $(docker images -a -q)'
+               // sh 'docker rmi $(docker images -a -q)'
                 sh 'docker images'
                 //sh 'docker system prune -a'
                 // Clean out the go-docker folder for next build
