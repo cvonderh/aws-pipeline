@@ -50,6 +50,7 @@ pipeline {
                  sh 'curl http://localhost:9090?name=Kraut'
             }
         }
+        //CREATE STEP TO PUSH TO DOCKERHUB
         //After all testing and new image pushed to hub, clean up locally
         stage("clean up local"){
             agent any
