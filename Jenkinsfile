@@ -5,7 +5,7 @@ pipeline {
         stage("Build service from Makefile"){
             agent any
             steps{
-                sh 'make'
+                sh 'make -f Makefile'
             }
         }
         // Lint the local version of service before it is containerized
