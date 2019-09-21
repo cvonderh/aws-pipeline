@@ -47,7 +47,7 @@ pipeline {
                  sh 'curl http://localhost:9090?name=Kraut'
             }
         }
-        stage('Publish to dockerhib') {
+        stage('Publish to dockerhub') {
             when {
                 branch 'master'
             }
