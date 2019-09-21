@@ -6,7 +6,7 @@ pipeline {
             agent any
             steps{
                 sh 'pwd'
-                sh "cd /home/ubuntu/udacity/aws-pipeline"
+                sh 'cd /home/ubuntu/udacity/aws-pipeline'
                 sh 'pwd'
                 sh 'make -f Makefile'
             }
