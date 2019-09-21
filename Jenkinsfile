@@ -59,6 +59,8 @@ pipeline {
                 sh 'docker images'
                 sh 'docker rmi $(docker images -a -q)'
                 sh 'docker images'
+                // Clean out the go-docker folder for next build
+                sh 'rm go-docker/*'
             }
         }
         stage('Example Test') {
