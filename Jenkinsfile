@@ -41,7 +41,7 @@ pipeline {
             steps{
                 sh 'docker images ls'
                 //sh 'docker pull cvonderh/go-docker:latest'
-                sh 'docker run -d -p 9090:9090 cvonderh/go-docker'
+                sh 'docker run --rm -d -p 9090:9090 cvonderh/go-docker'
                 //sh 'docker run  go-docker:latest'
                 //docker run -it -—rm -p 8080:3000 -p 8081:3001 -e RACK_ENV=development -e HOSTNAME=my-container my-rails-app:latest rackup
                  sh 'curl http://localhost:9090?name=Kraut'
@@ -59,6 +59,7 @@ pipeline {
                 sh 'docker images'
                 sh 'docker rmi $(docker images -a -q)'
                 sh 'docker images'
+                //sh 'docker system prune -a'
                 // Clean out the go-docker folder for next build
                 sh 'rm go-docker/*'
             }
