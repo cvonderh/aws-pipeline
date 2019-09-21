@@ -2,7 +2,7 @@ pipeline {
     agent none 
     stages {
         // Build service using make and test
-        stage("Build service from Makefile"){
+        stage("Build go-hello service from Makefile"){
             agent any
             steps{
                 sh 'make -C /home/ubuntu/udacity/aws-pipeline'
