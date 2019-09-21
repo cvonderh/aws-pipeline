@@ -5,6 +5,9 @@ pipeline {
         stage("Build service from Makefile"){
             agent any
             steps{
+                sh 'pwd'
+                sh "cd ~/udacity/aws-pipeline"
+                sh 'pwd'
                 sh 'make -f Makefile'
             }
         }
