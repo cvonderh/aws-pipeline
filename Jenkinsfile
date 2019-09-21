@@ -1,6 +1,22 @@
 pipeline {
     agent none 
     stages {
+        // Build service using make
+        stage("Build service from Makefile"){
+            agent any
+            steps{
+                sh 'make'
+            }
+        }
+        // Lint the local version of service before it is containerized
+        stage('Linting go service'){
+            agent any
+            steps{
+                sh 'echo linting now'
+                sh '/home/ubuntu/work/bin/golint ./go-docker/go-docker'
+                
+            }
+        }
         // PLACEHOLDER for stage to build locally from Dockerfile, then it will be tested
         stage('Test') {
             agent { dockerfile true }
@@ -8,15 +24,6 @@ pipeline {
                 echo 'Hello, from docker-go dockerfile build'
                 sh 'go version'
                 sh 'uname -a'
-            }
-        }
-        // Lint the local conatiner before it is built and pushed
-        stage('Linting go service'){
-            agent any
-            steps{
-                sh 'echo linting now'
-                sh '/home/ubuntu/work/bin/golint ./go-docker/go-docker'
-                
             }
         }
         //
