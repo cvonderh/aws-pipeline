@@ -47,16 +47,16 @@ pipeline {
                  sh 'curl http://localhost:9090?name=Kraut'
             }
         }
-        stage('Publish to dockerhub') {
-            when {
-                branch 'master'
-            }
-            steps {
-                withDockerRegistry([ credentialsId: "41af6e86-82ab-4e52-a11c-521749c59a8f", url: "" ]) {
-                sh 'docker push cvonderh/go-docker:latest'
-                }
-            }
-        }
+        // stage('Publish to dockerhub') {
+        //     when {
+        //         branch 'master'
+        //     }
+        //     steps {
+        //         withDockerRegistry([ credentialsId: "41af6e86-82ab-4e52-a11c-521749c59a8f", url: "" ]) {
+        //         sh 'docker push cvonderh/go-docker:latest'
+        //         }
+        //     }
+        // }
         //CREATE STEP TO PUSH TO DOCKERHUB
         //After all testing and new image pushed to hub, clean up locally
         stage("clean up local"){
