@@ -60,17 +60,16 @@ pipeline {
             }
         }
         // code placeholder
-        stage('Deploy Image Dockerhub v5') {
-            steps{
-                script {
-                docker.withRegistry( 'cvonderh/go-docker', 'dockerhubl' ) {
-                    dockerImage.push()
-                    }
-                
-                }
-                sh 'uname -a'
-            }
-        }
+        // stage('Deploy Image Dockerhub v5') {
+        //     steps{
+        //         script {
+        //         docker.withRegistry( 'cvonderh/go-docker', 'dockerhubl' ) {
+        //             dockerImage.push()
+        //             }
+        //         }
+        //         sh 'uname -a'
+        //     }
+        // }
         // stage('Publish to dockerhub') {
         //     when {
         //         branch 'master'
