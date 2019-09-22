@@ -1,4 +1,9 @@
 pipeline {
+    environment {
+    registry = "cvonderh/go-docke"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+    }
     agent none 
     stages {
         // Use make to build and test go service
@@ -72,7 +77,7 @@ pipeline {
                 sh 'docker images'
                 //sh 'docker system prune -a'
                 // Clean out the go-docker folder for next build
-                sh 'rm go-docker/*'
+                sh 'rm -f go-docker/*'
             }
         }
     }
