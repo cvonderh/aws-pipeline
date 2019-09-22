@@ -68,7 +68,7 @@ pipeline {
                 dockerImage.push()
                 }
            echo "Trying to push image"
-        }
+        
             // steps{
             //     sh 'uname -a'
             // }
