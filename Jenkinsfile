@@ -61,18 +61,18 @@ pipeline {
             }
         }
         // code placeholder
-        stage('Deploy Image Dockerhub v5') {
-            steps{
-                script {
-                docker.withRegistry( registryCredential ) {
-                    dockerImage.push()
-                    }
-                }
-            }
-            // steps{
-            //     sh 'uname -a'
-            // }
-        }
+        // stage('Deploy Image Dockerhub v5') {
+        //     steps{
+        //         script {
+        //         docker.withRegistry( registryCredential ) {
+        //             dockerImage.push()
+        //             }
+        //         }
+        //     }
+        //     // steps{
+        //     //     sh 'uname -a'
+        //     // }
+        // }
 
         // stage('Push with decalarative'){
         //     agent{
