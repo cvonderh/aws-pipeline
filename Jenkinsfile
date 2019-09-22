@@ -59,9 +59,13 @@ pipeline {
                 }
             }
         }
-        stage('Remove Unused docker image') {
+        stage('Deploy Image') {
             steps{
-                sh "docker rmi $registry:$BUILD_NUMBER"
+                script {
+                docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                    }
+                }
             }
         }
         // stage('Publish to dockerhub') {
