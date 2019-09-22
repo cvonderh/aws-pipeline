@@ -36,7 +36,7 @@ pipeline {
         //     }
         // }
         // Test with a curl command
-        stage("Run conatiner and test service with curl"){
+        stage("Run container and test service with curl"){
             agent any
             steps{
                 sh 'docker images ls'
