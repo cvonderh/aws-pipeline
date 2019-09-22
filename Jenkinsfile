@@ -62,18 +62,29 @@ pipeline {
             }
         }
         //code placeholder
-        stage('Deploy Image Dockerhub v5') {
-            steps{
-                script {
-                docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push()
-                    }
+        stage('Deploy Image Dockerhub v6') {
+            
+            docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+                dockerImage.push()
                 }
-            }
+           echo "Trying to push image"
+        }
             // steps{
             //     sh 'uname -a'
             // }
         }
+        // stage('Deploy Image Dockerhub v5') {
+        //     steps{
+        //         script {
+        //         docker.withRegistry( '', registryCredential ) {
+        //             dockerImage.push()
+        //             }
+        //         }
+        //     }
+        //     // steps{
+        //     //     sh 'uname -a'
+        //     // }
+        // }
 
         // stage('Push with decalarative'){
         //     agent{
