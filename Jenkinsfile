@@ -1,6 +1,6 @@
 pipeline {
     environment {
-    registry = "cvonderh/go-docke"
+    registry = "cvonderh/go-docker"
     registryCredential = 'docker-hub'
     dockerImage = ''
     }
