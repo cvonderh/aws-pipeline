@@ -63,7 +63,7 @@ pipeline {
         stage('Deploy Image Dockerhub v3') {
             steps{
                 script {
-                docker.withRegistry( 'https://cloud.docker.com/repository/docker/cvonderh/go-docker', registryCredential ) {
+                docker.withRegistry( 'https://cloud.docker.com/repository/docker/cvonderh/go-docker', '024408b3905c2bd99d5e7339772ef88363af8e64' ) {
                     dockerImage.push()
                     }
                 }
