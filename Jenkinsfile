@@ -66,6 +66,7 @@ pipeline {
                 docker.withRegistry( 'https://cloud.docker.com/repository/docker/cvonderh/go-docker', '024408b3905c2bd99d5e7339772ef88363af8e64' ) {
                     dockerImage.push()
                     }
+                sh 'uname -a'
                 }
             }
         }
