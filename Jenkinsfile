@@ -63,7 +63,7 @@ pipeline {
         stage('Deploy Image Dockerhub v5') {
             steps{
                 script {
-                docker.withRegistry( 'https://registry.hub.docker.com, registryCredential ) {
+                docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
                     dockerImage.push()
                     }
                 }
