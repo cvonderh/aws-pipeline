@@ -3,6 +3,7 @@ pipeline {
     registry = "cvonderh/go-docker"
     registryCredential = 'dockerhubl'
     dockerImage = ''
+    registryUrl = ''
     }
     agent none 
     stages {
@@ -60,30 +61,31 @@ pipeline {
             }
         }
         // code placeholder
-        // stage('Deploy Image Dockerhub v5') {
-        //     steps{
-        //         script {
-        //         docker.withRegistry( 'https://registry.hub.docker.com/', registryCredential ) {
-        //             dockerImage.push()
-        //             }
-        //         }
-        //     }
-        //     // steps{
-        //     //     sh 'uname -a'
-        //     // }
-        // }
-        stage('Push with decalarative'){
-            agent{
-                docker {
-                    image 'cvonderh/go-docker'
-                    registryUrl ''
-                    registryCredentialsId registryCredential
+        stage('Deploy Image Dockerhub v5') {
+            steps{
+                script {
+                docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                    }
                 }
             }
-            steps{
-                sh 'docker push cvonderh/go-docker:latest'
-            }
+            // steps{
+            //     sh 'uname -a'
+            // }
         }
+
+        // stage('Push with decalarative'){
+        //     agent{
+        //         docker {
+        //             image 'cvonderh/go-docker'
+        //             registryUrl ''
+        //             registryCredentialsId registryCredential
+        //         }
+        //     }
+        //     steps{
+        //         sh 'docker push cvonderh/go-docker:latest'
+        //     }
+        // }
         // stage('Publish to dockerhub v2') {
         //     when {
         //         branch 'master'
