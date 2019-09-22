@@ -61,7 +61,7 @@ pipeline {
                 }
             }
         }
-        code placeholder
+        //code placeholder
         stage('Deploy Image Dockerhub v5') {
             steps{
                 script {
