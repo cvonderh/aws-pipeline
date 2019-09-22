@@ -60,17 +60,26 @@ pipeline {
             }
         }
         // code placeholder
-        stage('Deploy Image Dockerhub v5') {
-            steps{
-                script {
-                docker.withRegistry( 'https://registry.hub.docker.com/cvonderh', registryCredential ) {
-                    dockerImage.push()
-                    }
+        // stage('Deploy Image Dockerhub v5') {
+        //     steps{
+        //         script {
+        //         docker.withRegistry( 'https://registry.hub.docker.com/', registryCredential ) {
+        //             dockerImage.push()
+        //             }
+        //         }
+        //     }
+        //     // steps{
+        //     //     sh 'uname -a'
+        //     // }
+        // }
+        stage('Push with decalarative'){
+            agent{
+                docker {
+                    image 'cvonderh/go-docker'
+                    registryUrl ''
+                    registryCredentialsId 'registryCredential'
                 }
             }
-            // steps{
-            //     sh 'uname -a'
-            // }
         }
         // stage('Publish to dockerhub v2') {
         //     when {
