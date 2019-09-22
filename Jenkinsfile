@@ -77,7 +77,7 @@ pipeline {
                 docker {
                     image 'cvonderh/go-docker'
                     registryUrl ''
-                    registryCredentialsId 'registryCredential'
+                    registryCredentialsId registryCredential
                 }
             }
             steps{
