@@ -6,7 +6,7 @@ pipeline {
     }
     agent none 
     stages {
-        // Use make to build and test go service
+        // Use make to build and test go service here
         stage("Build go-hello service from Makefile"){
             agent any
             steps{
