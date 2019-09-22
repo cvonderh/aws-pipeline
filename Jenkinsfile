@@ -57,6 +57,7 @@ pipeline {
             steps{
                 script {
                 dockerImage = docker.build("go-docker", "/home/ubuntu/udacity/aws-pipeline")
+                dockerImage.push('latest')
                 }
             }
         }
