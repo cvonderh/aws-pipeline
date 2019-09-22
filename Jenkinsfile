@@ -55,8 +55,13 @@ pipeline {
         stage('Building NEW WAY image') {
             steps{
                 script {
-                dockerImage = docker.build("go-docker", "/home/ubuntu/udacity/aws-pipeline") registry + ":$BUILD_NUMBER"
+                dockerImage = docker.build("go-docker", "/home/ubuntu/udacity/aws-pipeline") + ":$BUILD_NUMBER"
                 }
+            }
+        }
+        stage('Remove Unused docker image') {
+            steps{
+                sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
         // stage('Publish to dockerhub') {
