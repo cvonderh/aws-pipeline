@@ -66,8 +66,9 @@ pipeline {
                 docker.withRegistry( 'cvonderh/go-docker', 'dockerhubl' ) {
                     dockerImage.push()
                     }
-                sh 'uname -a'
+                
                 }
+                sh 'uname -a'
             }
         }
         // stage('Publish to dockerhub') {
