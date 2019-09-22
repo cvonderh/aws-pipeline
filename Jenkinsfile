@@ -69,7 +69,7 @@ pipeline {
         //         }
         //     }
         // }
-        //CREATE STEP TO PUSH TO DOCKERHUB
+        //CREATE STEP TO PUSH TO DOCKERHUB dddd
         //After all testing and new image pushed to hub, clean up locally
         stage("clean up local images"){
             agent any
