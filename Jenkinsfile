@@ -57,23 +57,23 @@ pipeline {
             steps{
                 script {
                 dockerImage = docker.build("go-docker", "/home/ubuntu/udacity/aws-pipeline")
-                dockerImage.push('latest')
+                //dockerImage.push('latest')
                 }
             }
         }
-        // code placeholder
-        // stage('Deploy Image Dockerhub v5') {
-        //     steps{
-        //         script {
-        //         docker.withRegistry( registryCredential ) {
-        //             dockerImage.push()
-        //             }
-        //         }
-        //     }
-        //     // steps{
-        //     //     sh 'uname -a'
-        //     // }
-        // }
+        code placeholder
+        stage('Deploy Image Dockerhub v5') {
+            steps{
+                script {
+                docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                    }
+                }
+            }
+            // steps{
+            //     sh 'uname -a'
+            // }
+        }
 
         // stage('Push with decalarative'){
         //     agent{
