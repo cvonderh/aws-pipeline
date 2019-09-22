@@ -63,7 +63,7 @@ pipeline {
         stage('Deploy Image Dockerhub v5') {
             steps{
                 script {
-                docker.withRegistry( 'https://cloud.docker.com/repository/docker/cvonderh/go-docker', 'dockerhubl' ) {
+                docker.withRegistry( ' ', 'dockerhubl' ) {
                     dockerImage.push()
                     }
                 sh 'uname -a'
