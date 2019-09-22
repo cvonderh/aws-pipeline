@@ -81,7 +81,7 @@ pipeline {
                 }
             }
             steps{
-                sh 'uname -a'
+                sh 'docker push cvonderh/go-docker:latest'
             }
         }
         // stage('Publish to dockerhub v2') {
