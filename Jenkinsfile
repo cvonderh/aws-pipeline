@@ -52,6 +52,13 @@ pipeline {
                  sh 'curl http://localhost:9090?name=Kraut'
             }
         }
+        stage('Building NEW WAY image') {
+            steps{
+                script {
+                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
         // stage('Publish to dockerhub') {
         //     when {
         //         branch 'master'
