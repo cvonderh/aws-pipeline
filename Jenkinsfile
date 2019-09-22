@@ -72,15 +72,16 @@ pipeline {
         //     //     sh 'uname -a'
         //     // }
         // }
-        stage('Push with decalarative'){
-            steps{
-                agent{
-                    docker {
-                        image 'cvonderh/go-docker'
-                        registryUrl ''
-                        registryCredentialsId 'registryCredential'
-                    }
+        stage('Push with decalarative syntax'){
+            agent{
+                docker {
+                    image 'cvonderh/go-docker'
+                    registryUrl ''
+                    registryCredentialsId 'registryCredential'
                 }
+            }
+            steps{
+                sh 'uname -a'
             }
         }
         // stage('Publish to dockerhub v2') {
