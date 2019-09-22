@@ -71,7 +71,7 @@ pipeline {
         // }
         //CREATE STEP TO PUSH TO DOCKERHUB
         //After all testing and new image pushed to hub, clean up locally
-        stage("clean up local"){
+        stage("clean up local images"){
             agent any
             steps{
                 // sh 'docker ps -a'
