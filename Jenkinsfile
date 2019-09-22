@@ -60,26 +60,15 @@ pipeline {
             }
         }
         // code placeholder
-        stage('Push image') {
-            /* Finally, we'll push the image with two tags:
-            * First, the incremental build number from Jenkins
-            * Second, the 'latest' tag. */
-            withCredentials([usernamePassword( credentialsId: 'docker-hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-
-            docker.withRegistry('', 'docker-hub-credentials') {
-            sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-            myImage.push("latest")
+        stage('Deploy Image Dockerhub v3') {
+            steps{
+                script {
+                docker.withRegistry( 'https://cloud.docker.com/repository/docker/cvonderh/go-docker', registryCredential ) {
+                    dockerImage.push()
+                    }
+                }
+            }
         }
-        // stage('Deploy Image Dockerhub v3') {
-        //     steps{
-        //         script {
-        //         //docker.withRegistry( '', registryCredential ) {
-        //         docker.withRegistry( '', '' ) {
-        //             dockerImage.push()
-        //             }
-        //         }
-        //     }
-        // }
         // stage('Publish to dockerhub') {
         //     when {
         //         branch 'master'
