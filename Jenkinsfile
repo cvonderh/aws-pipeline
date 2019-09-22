@@ -70,13 +70,14 @@ pipeline {
         //         sh 'uname -a'
         //     }
         // }
-        stage('Publish to dockerhub') {
+        stage('Publish to dockerhub v2') {
             when {
                 branch 'master'
             }
             steps {
-                withDockerRegistry([ credentialsId: "41af6e86-82ab-4e52-a11c-521749c59a8f", url: "" ]) {
-                sh 'docker push cvonderh/go-docker:latest'
+                script{
+                    withDockerRegistry([ credentialsId: "41af6e86-82ab-4e52-a11c-521749c59a8f", url: "" ]) {
+                sh 'docker push cvonderh/go-docker:latest'}
                 }
             }
         }
