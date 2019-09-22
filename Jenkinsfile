@@ -1,7 +1,7 @@
 pipeline {
     environment {
     registry = "cvonderh/go-docker"
-    registryCredential = 'docker-TOKEN'
+    registryCredential = 'dockerhubl'
     dockerImage = ''
     }
     agent none 
@@ -63,7 +63,7 @@ pipeline {
         stage('Deploy Image Dockerhub v5') {
             steps{
                 script {
-                docker.withRegistry( 'go-docker', 'dockerhubl' ) {
+                docker.withRegistry( '', registryCredential ) {
                     dockerImage.push()
                     }
                 }
