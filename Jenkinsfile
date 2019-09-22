@@ -68,9 +68,9 @@ pipeline {
                     }
                 }
             }
-            steps{
-                sh 'uname -a'
-            }
+            // steps{
+            //     sh 'uname -a'
+            // }
         }
         // stage('Publish to dockerhub v2') {
         //     when {
