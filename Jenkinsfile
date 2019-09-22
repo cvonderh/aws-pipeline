@@ -55,7 +55,7 @@ pipeline {
         stage('Building NEW WAY image') {
             steps{
                 script {
-                dockerImage = docker.build("go-docker", "/home/ubuntu/udacity/aws-pipeline") + ":$BUILD_NUMBER"
+                dockerImage = docker.build("go-docker", "/home/ubuntu/udacity/aws-pipeline")
                 }
             }
         }
