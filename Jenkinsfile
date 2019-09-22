@@ -1,9 +1,9 @@
 pipeline {
-    // environment {
-    // registry = "cvonderh/go-docker"
-    // registryCredential = 'docker-TOKEN'
-    // dockerImage = ''
-    // }
+    environment {
+    registry = "cvonderh/go-docker"
+    registryCredential = 'docker-TOKEN'
+    dockerImage = ''
+    }
     agent none 
     stages {
         // Use make to build and test go service here
