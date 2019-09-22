@@ -19,7 +19,7 @@ pipeline {
         }
         // Conatinerize hello-go service
         stage('Containerize go-hello service') {
-            agent { dockerfile true { dir '/home/ubuntu/udacity/aws-pipeline' } }
+            agent { dockerfile  { dir '/home/ubuntu/udacity/aws-pipeline' } }
             steps {
                 echo 'Hello, from docker-go dockerfile build'
                 sh 'go version'
