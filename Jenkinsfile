@@ -72,7 +72,7 @@ pipeline {
         //     //     sh 'uname -a'
         //     // }
         // }
-        stage('Push with decalarative syntax'){
+        stage('Push with decalarative'){
             agent{
                 docker {
                     image 'cvonderh/go-docker'
