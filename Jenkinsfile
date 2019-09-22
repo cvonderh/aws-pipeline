@@ -1,7 +1,7 @@
 pipeline {
     environment {
     registry = "cvonderh/go-docke"
-    registryCredential = 'dockerhub'
+    registryCredential = 'docker-hub'
     dockerImage = ''
     }
     agent none 
