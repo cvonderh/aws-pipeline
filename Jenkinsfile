@@ -1,6 +1,6 @@
 pipeline {
     environment {
-    registry = 'https://cloud.docker.com/repository/docker/cvonderh/go-docker'
+    registry = 'https://cloud.docker.com/cvonderh/go-docker'
     registryCredential = 'dockerhubl'
     dockerImage = ''
     }
