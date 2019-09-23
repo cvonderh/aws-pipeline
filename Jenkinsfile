@@ -5,7 +5,8 @@ node {
         /* Cloning the Repository to our Workspace */
         //Need to add build of initia image here if
 
-        checkout scm
+        //checkout scm
+        sh 'make -C /home/ubuntu/udacity/aws-pipeline'
     }
 
     stage('Build image') {
