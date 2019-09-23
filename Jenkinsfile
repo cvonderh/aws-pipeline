@@ -33,7 +33,7 @@ node {
                 echo "Trying to Push Docker Build to DockerHub"
     }
     stage('Deploy service') {
-        //checkout scm
+        //deploy service aws k8s cluster
         sh 'kubectl get pods'
     }
 }
