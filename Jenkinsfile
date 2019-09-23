@@ -35,11 +35,7 @@ node {
     node {
     stage('List pods') {
         withKubeConfig([credentialsId: 'k8cli',
-                        caCertificate: '<ca-certificate>',
-                        serverUrl: '<api-server-address>',
-                        contextName: '<context-name>',
-                        clusterName: 'udacity',
-                        namespace: '<namespace>'
+                        clusterName: 'udacity'
                         ]) {
         sh 'kubectl get pods'
             }
