@@ -40,7 +40,7 @@ node {
                         clusterName: 'kubernetes'
                         //,namespace: '<namespace>'
                         ]) {
-            sh 'kubectl get pods'
+            sh 'kubectl version'
         }
     }
     // stage('Deploy service') {
