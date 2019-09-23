@@ -32,4 +32,8 @@ node {
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }
+    stage('Deploy service') {
+        //checkout scm
+        sh 'kubectl get pods'
+    }
 }
