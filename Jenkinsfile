@@ -33,7 +33,7 @@ node {
                 echo "Trying to Push Docker Build to DockerHub"
     }
     stage('Deploy service') {
-        //deploy service aws k8s cluster
+        //deploy service aws k8s cluster added iam 
         sh 'kubectl run --image=cvonderh/go-docker:latest go-hello-service --port=9090'
     }
 }
