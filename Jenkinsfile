@@ -3,7 +3,7 @@ node {
 
     stage('Clone repository') {
         /* Cloning the Repository to our Workspace */
-        //Need to add build of initia image here if
+        //Need to add build of initia image here using make
 
         //checkout scm
         sh 'make -C /home/ubuntu/udacity/aws-pipeline'
