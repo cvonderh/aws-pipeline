@@ -12,7 +12,7 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("cvonderh/go-docker")
+        app = docker.build("cvonderh/go-docker", "/home/ubuntu/udacity/aws-pipeline")
     }
 
     stage('Test image') {
