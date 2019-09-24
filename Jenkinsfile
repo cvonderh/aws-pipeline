@@ -30,10 +30,9 @@ node {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
             } 
-                echo "Trying to Push Docker Build to DockerHub"
     }
     stage('Deploy Service') {
-        withKubeConfig([credentialsId: 'kubeconfig-adminsa'
+        withKubeConfig([credentialsId: 'kube-config-udacity'
             ]) {
             sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
             sh 'kubectl get pods'
