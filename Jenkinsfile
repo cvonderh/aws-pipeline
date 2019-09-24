@@ -33,7 +33,7 @@ node {
                 echo "Trying to Push Docker Build to DockerHub"
     }
     stage('List pods') {
-        withKubeConfig([credentialsId: 'kube-config-udacity']) {
+        withKubeConfig([credentialsId: 'jenkins-deployer-credentials']) {
             //sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
             sh 'kubectl get pods'
         }
