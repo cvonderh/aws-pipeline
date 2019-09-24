@@ -9,7 +9,7 @@ node {
     stage('Test image') {
         
         echo 'Testing with golint'
-        sh '/home/ubuntu/work/bin/golint -set_exit_status /home/ubuntu/udacity/aws-pipeline/go-docker/go-docker'
+        sh '/home/ubuntu/work/bin/golint -set_exit_status=true /home/ubuntu/udacity/aws-pipeline/go-docker/go-docker'
     }
     stage('Build and conatinerize service') {
         /* This builds the actual image */
