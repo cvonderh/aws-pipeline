@@ -40,7 +40,8 @@ node {
         }
     }
     // stage('Deploy service') {
-    //     //deploy service aws k8s cluster added iam new 
+    //     //deploy service aws k8s cluster added iam new add privelages
+    
     //     sh 'kubectl run --image=cvonderh/go-docker:latest go-hello-service --port=9090'
     // }
 }
