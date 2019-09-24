@@ -1,25 +1,20 @@
 node {
     def app
 
-    stage('Clone repository') {
-        /* Cloning the Repository to our Workspace */
+    stage('Build service in locally') {
         //Need to add build of initia image here using make
 
-        //checkout scm
         sh 'make -C /home/ubuntu/udacity/aws-pipeline'
     }
-
-    stage('Build image') {
+    stage('Test image') {
+        
+        echo 'Testing with golint'
+        sh '/home/ubuntu/work/bin/golint -set_exit_status ./go-docker/go-docker'
+    }
+    stage('Build and conatinerize service') {
         /* This builds the actual image */
 
         app = docker.build("cvonderh/go-docker", "/home/ubuntu/udacity/aws-pipeline")
-    }
-
-    stage('Test image') {
-        
-        app.inside {
-            echo "Tests passed"
-        }
     }
 
     stage('Push image') {
