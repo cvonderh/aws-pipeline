@@ -40,7 +40,7 @@ node {
                         clusterName: 'kubernetes'
                         //,namespace: '<namespace>'
                         ]) {
-            sh 'kubectl version'
+            sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
         }
     }
     // stage('Deploy service') {
