@@ -33,8 +33,7 @@ node {
                 echo "Trying to Push Docker Build to DockerHub"
     }
     stage('Deploy Service') {
-        withKubeConfig([credentialsId: 'aws-login',
-                serverUrl: 'https://F5CF0196AD212F1153E27515C7A35086.gr7.us-east-1.eks.amazonaws.com'
+        withKubeConfig([credentialsId: 'kubeconfig-adminsa'
             ]) {
             sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
             sh 'kubectl get pods'
