@@ -32,7 +32,8 @@ node {
             } 
     }
     stage('Deploy Service') {
-        withKubeConfig([credentialsId: 'jenkins-deployer'
+        withKubeConfig([credentialsId: 'jenkins-deployer',
+                'https://028F72CFE7F177FB8E6FA4529169F920.gr7.us-east-1.eks.amazonaws.com'
             ]) {
             sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
             sh 'kubectl get pods'
