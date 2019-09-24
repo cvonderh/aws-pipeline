@@ -1,15 +1,15 @@
 node {
     def app
-
+   stage('Test go code') {
+        
+        echo 'Testing with golint'
+        sh '/home/ubuntu/work/bin/golint -set_exit_status=true /home/ubuntu/udacity/aws-pipeline/service_hello.go'
+    }
+    //If pass build locally
     stage('Build service locally') {
         //Need to add build of initia image here using make
 
         sh 'make -C /home/ubuntu/udacity/aws-pipeline'
-    }
-    stage('Test image') {
-        
-        echo 'Testing with golint'
-        sh '/home/ubuntu/work/bin/golint -set_exit_status=true /home/ubuntu/udacity/aws-pipeline/go-docker/go-docker'
     }
     stage('Build and conatinerize service') {
         /* This builds the actual image */
