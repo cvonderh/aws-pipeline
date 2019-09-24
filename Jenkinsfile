@@ -32,7 +32,7 @@ node {
             } 
     }
     stage('Deploy Service') {
-        withKubeConfig([credentialsId: 'kube-config-udacity'
+        withKubeConfig([credentialsId: 'jenkins-deployer'
             ]) {
             sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
             sh 'kubectl get pods'
