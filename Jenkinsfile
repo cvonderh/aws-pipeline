@@ -1,7 +1,7 @@
 node {
     def app
 
-    stage('Build service in locally') {
+    stage('Build service locally') {
         //Need to add build of initia image here using make
 
         sh 'make -C /home/ubuntu/udacity/aws-pipeline'
@@ -9,7 +9,7 @@ node {
     stage('Test image') {
         
         echo 'Testing with golint'
-        sh '/home/ubuntu/work/bin/golint -set_exit_status ./go-docker/go-docker'
+        sh '/home/ubuntu/work/bin/golint -set_exit_status /home/ubuntu/udacity/aws-pipeline/go-docker/go-docker'
     }
     stage('Build and conatinerize service') {
         /* This builds the actual image */
@@ -17,7 +17,7 @@ node {
         app = docker.build("cvonderh/go-docker", "/home/ubuntu/udacity/aws-pipeline")
     }
 
-    stage('Push image') {
+    stage('Push image Dockerhub') {
         /* 
 			You would need to first register with DockerHub before you can push images to your account
 		*/
@@ -26,7 +26,7 @@ node {
             app.push("latest")
             } 
     }
-    stage('Deploy Service') {
+    stage('Deploy Service into EKS cluster') {
         withKubeConfig([credentialsId: 'jenkins-deployer',
             serverUrl: 'https://028F72CFE7F177FB8E6FA4529169F920.gr7.us-east-1.eks.amazonaws.com'
             ]) {
