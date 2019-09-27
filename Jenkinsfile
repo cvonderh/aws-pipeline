@@ -30,7 +30,10 @@ node {
         withKubeConfig([credentialsId: 'jenkins-deployer',
             serverUrl: 'https://028F72CFE7F177FB8E6FA4529169F920.gr7.us-east-1.eks.amazonaws.com'
             ]) {
-            sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
+            //sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
+            // example
+            //kubectl set image deployment/my-deployment mycontainer=repo-name/whatever-app:<version>
+            sh 'kubectl set image deployment/gohello-svc gocontainer=cvonderh/go-docker:latest'
             sh 'kubectl expose deployment gohello-svc --port=9090 --name=gohello-svc-http --type=LoadBalancer'
             sh 'kubectl get pods'
         }
