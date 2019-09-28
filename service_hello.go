@@ -38,13 +38,13 @@ func main() {
 	}
 
 	// Configure Logging
-	//LogFileLocation := os.Getenv("LogFileLocation")
-	//if LogFileLocation != "" {
-	Log_File_Location := os.Getenv("Log_File_Location")
-	if Log_File_Location != "" {
+	LogFileLocation := os.Getenv("LogFileLocation")
+	if LogFileLocation != "" {
+	// Log_File_Location := os.Getenv("Log_File_Location")
+	// if Log_File_Location != "" {
 		log.SetOutput(&lumberjack.Logger{
-			//Filename:   LogFileLocation,
-			Filename:   Log_File_Location,
+			Filename:   LogFileLocation,
+			//Filename:   Log_File_Location,
 			MaxSize:    500, // megabytes
 			MaxBackups: 3,
 			MaxAge:     28,   //days
