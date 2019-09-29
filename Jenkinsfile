@@ -32,7 +32,7 @@ node {
             serverUrl: 'https://3352A0BBE32DA0FE53383BB20D7D5735.gr7.us-east-1.eks.amazonaws.com'
             ]) {
             
-            rs_exists = true
+            rs_exists = false
 
             if( rs_exists == true ) // If the replica set alrwady exists set new image
             {
@@ -45,9 +45,13 @@ node {
             else{
 
                 // run the intial build
-                
-                echo 'Deploying the initial build image'
+                sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
+                // expose service
+                sh 'kubectl expose deployment gohello-svc --port=9090 --name=gohello-svc-http --type=LoadBalancer'
+                echo 'Deploying the initial build image and exposing service'
                 //clean up for next build
+                sh 'kubectl get pods'
+                sh 'kubectl get deployment'
                 sh '/home/ubuntu/udacity/aws-pipeline/docs/cleanup.sh'
             }
         }
