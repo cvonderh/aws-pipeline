@@ -34,14 +34,14 @@ node {
             
             rs_exists = sh 'kubectl get deployment gohello-svc -o=jsonpath="{.status.availableReplicas}"'
 
-            if( rs_exists > 0 ) // If the replica set alrwady exists set new image
+            if( rs_exists == 1 ) // If the replica set already exists set new image
             {
-                sh 'kubectl get pods'
+                sh 'kubectl set image deployment gohello-svc go-docker=cvonderh/go-docker:latest'
                 echo 'Deploying new image'
                 //clean up for next build
                 sh '/home/ubuntu/udacity/aws-pipeline/docs/cleanup.sh'
-            }
 
+            }
             else{
 
                 // run the intial build
