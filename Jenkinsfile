@@ -32,7 +32,7 @@ node {
             serverUrl: 'https://3352A0BBE32DA0FE53383BB20D7D5735.gr7.us-east-1.eks.amazonaws.com'
             ]) {
             
-            rs_exists = sh 'kubectl get deployment gohello-svc -o=jsonpath="{.status.availableReplicas}"'
+            def rs_exists = sh 'kubectl get deployment gohello-svc -o=jsonpath="{.status.availableReplicas}"'
 
             if( rs_exists == 1 ) // If the replica set already exists set new image
             {
