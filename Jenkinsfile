@@ -39,7 +39,7 @@ node {
 
             echo "Status of rs_exists: ${rs_exists}"
 
-            if( rs_exists == true ) // If the replica set already exists then set new image x
+            if( rs_exists == true ) // If the replica set already exists then set new image xxxx
             {
                 sh 'kubectl set image deployment/gohello-svc gohello-svc=cvonderh/go-docker:latest'
                 sh 'kubectl set image deployment/gohello-svc gohello-svc=cvonderh/go-docker'
