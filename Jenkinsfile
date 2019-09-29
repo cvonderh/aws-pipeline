@@ -36,7 +36,7 @@ node {
 
             if( rs_exists == true ) // If the replica set alrwady exists set new image
             {
-                kubectl get pods
+                sh 'kubectl get pods'
                 echo 'Deploying new image'
                 //clean up for next build
                 sh '/home/ubuntu/udacity/aws-pipeline/docs/cleanup.sh'
