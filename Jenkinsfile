@@ -51,7 +51,7 @@ node {
             }
             else{
 
-                // run the intial build
+                // run the intial build image
                 sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
                 // expose service
                 sh 'kubectl expose deployment gohello-svc --port=9090 --name=gohello-svc-http --type=LoadBalancer'
