@@ -32,9 +32,9 @@ node {
             serverUrl: 'https://3352A0BBE32DA0FE53383BB20D7D5735.gr7.us-east-1.eks.amazonaws.com'
             ]) {
             
-            rs_exists = false
+            rs_exists = sh 'kubectl get deployment gohello-svc -o=jsonpath="{.status.availableReplicas}"'
 
-            if( rs_exists == true ) // If the replica set alrwady exists set new image
+            if( rs_exists > 0 ) // If the replica set alrwady exists set new image
             {
                 sh 'kubectl get pods'
                 echo 'Deploying new image'
