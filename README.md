@@ -21,28 +21,9 @@ You have to select the secret starting with “jenkins-deployer” and get the c
 
 ```kubectl describe secret jenkins-deployer-token-jvdmf```
 
-Copy the info and use to create credential in Jenkins.
+Copy the value of the token and use to create credential in Jenkins.
 
-
-
-
-## Running the app locally
-
-```bash
-$ go build
-$ ./go-docker
-2019/02/03 11:38:11 Starting Server
-```
-
-```bash
-$ curl http://localhost:8080?name=Rajeev
-Hello, Rajeev
-```
-
-## Building and running the docker image
-
-## Building and running the docker image
-Cleaning up after.
+## Cleaning up after.
 
 Delete the cluster and worker nodes using EKS commands.
 
