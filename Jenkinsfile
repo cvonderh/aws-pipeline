@@ -37,7 +37,7 @@ node {
                 returnStatus: true
             ) == 0
 
-            echo "Status of rs_exists: ${BUILD_FULL}"
+            echo "Status of rs_exists: ${rs_exists}"
 
             if( rs_exists == true ) // If the replica set already exists set new image
             {
