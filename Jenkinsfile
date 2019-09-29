@@ -29,7 +29,7 @@ node {
     }
         stage('Deploy Service into EKS cluster') {
         withKubeConfig([credentialsId: 'jenkins-deployer',
-            serverUrl: 'https://3352A0BBE32DA0FE53383BB20D7D5735.gr7.us-east-1.eks.amazonaws.com'
+            serverUrl: 'https://D352B1810EB9D02A21463B98210C432F.gr7.us-east-1.eks.amazonaws.com'
             ]) {
             
             rs_exists = sh (
