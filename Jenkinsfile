@@ -41,7 +41,7 @@ node {
 
             if( rs_exists == true ) // If the replica set already exists set new image
             {
-                sh 'kubectl set image deployment gohello-svc go-docker=cvonderh/go-docker:latest'
+                sh 'kubectl set image deployment/gohello-svc gohello-svc=cvonderh/go-docker:latest'
                 echo 'Deploying new image'
                 //clean up for next build
                 sh 'kubectl get pods'
