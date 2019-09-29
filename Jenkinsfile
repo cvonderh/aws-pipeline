@@ -27,19 +27,44 @@ node {
             app.push("latest")
             } 
     }
-    stage('Deploy Service into EKS cluster') {
+        stage('Deploy Service into EKS cluster') {
         withKubeConfig([credentialsId: 'jenkins-deployer',
-            serverUrl: 'https://B1BDEB6FD3633562F2E5231FEEB19EEE.gr7.us-east-1.eks.amazonaws.com'
+            serverUrl: 'https://3352A0BBE32DA0FE53383BB20D7D5735.gr7.us-east-1.eks.amazonaws.com'
             ]) {
-            //sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
-            // example
-            //kubectl set image deployment/my-deployment mycontainer=repo-name/whatever-app:<version>
-            //sh 'kubectl set image  gohello-svc gocontainer=cvonderh/go-docker:latest'
-            //sh 'kubectl set image deployment nginx nginx=nginx:1.9.1'
-            sh 'kubectl set image deployment gohello-svc go-docker=cvonderh/go-docker:latest'
-            sh 'kubectl expose deployment gohello-svc --port=9090 --name=gohello-svc-http --type=LoadBalancer'
-            sh 'kubectl get pods'
-            sh 'kubectl get deployment'
+            
+            rs_exists = true
+
+            if( rs_exists == true ) // If the replica set alrwady exists set new image
+            {
+                kubectl get pods
+                echo 'Deploying new image'
+                //clean up for next build
+                sh '/home/ubuntu/udacity/aws-pipeline/docs/cleanup.sh'
+            }
+
+            else{
+
+                // run the intial build
+                
+                echo 'Deploying the initial build image'
+                //clean up for next build
+                sh '/home/ubuntu/udacity/aws-pipeline/docs/cleanup.sh'
+            }
         }
     }
+    // stage('Deploy Service into EKS cluster') {
+    //     withKubeConfig([credentialsId: 'jenkins-deployer',
+    //         serverUrl: 'https://3352A0BBE32DA0FE53383BB20D7D5735.gr7.us-east-1.eks.amazonaws.com'
+    //         ]) {
+    //         //sh 'kubectl run --image=cvonderh/go-docker:latest gohello-svc --port=9090'
+    //         // example
+    //         //kubectl set image deployment/my-deployment mycontainer=repo-name/whatever-app:<version>
+    //         //sh 'kubectl set image  gohello-svc gocontainer=cvonderh/go-docker:latest'
+    //         //sh 'kubectl set image deployment nginx nginx=nginx:1.9.1'
+    //         sh 'kubectl set image deployment gohello-svc go-docker=cvonderh/go-docker:latest'
+    //         sh 'kubectl expose deployment gohello-svc --port=9090 --name=gohello-svc-http --type=LoadBalancer'
+    //         sh 'kubectl get pods'
+    //         sh 'kubectl get deployment'
+    //     }
+    // }
 }
